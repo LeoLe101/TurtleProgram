@@ -1,5 +1,6 @@
-
-
+//TurtleProgram.hpp
+//Header class for the TurtleProgram with all functions, libraries
+//and members needed for the class
 #ifndef TurtleProgram_hpp
 #define TurtleProgram_hpp
 

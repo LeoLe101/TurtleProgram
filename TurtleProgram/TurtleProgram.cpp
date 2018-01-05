@@ -1,14 +1,18 @@
-
-
+//TurtleProgram.cpp
+//Class for the TurtleProgram with all functions, libraries
+//and members' functionalities in order for the program to
+//work
 #include "TurtleProgram.hpp"
 
-//constructors, copy constructor & destructor
+//default constructor for the program
 TurtleProgram::TurtleProgram()
 {
     arr = NULL;
     size = 0;
 }
 
+//copy constructor with the param required another
+//program in order to make the copy
 TurtleProgram::TurtleProgram(const TurtleProgram& turtle)
 {
     size = turtle.size;
@@ -16,6 +20,8 @@ TurtleProgram::TurtleProgram(const TurtleProgram& turtle)
     arr = turtle.arr;           //copy instructions
 }
 
+//constructor for the program with two params that
+//include the string to be inserted
 TurtleProgram::TurtleProgram(string str1, string str2)
 {
     size = 2;
@@ -33,7 +39,9 @@ TurtleProgram::~TurtleProgram()
     }
 }
 
-//getter & setter
+//getter for the index desired from the program.
+//The param required a certain index in order to
+//obtain the element at that value
 string TurtleProgram::getIndex(int index) const
 {
     string result;
@@ -49,11 +57,14 @@ string TurtleProgram::getIndex(int index) const
     return result;
 }
 
+//get the length of the current program's size
 int TurtleProgram::getLength() const
 {
     return size;
 }
 
+//set the element at that specific index in the
+//program
 void TurtleProgram::setIndex(int index, string str)
 {
     //check invalid index
@@ -68,7 +79,10 @@ void TurtleProgram::setIndex(int index, string str)
 }
 
 
-//overloading operators
+//overloading operators == for the program.
+//The param required another program in order
+//to compare. Return true if they are equal,
+//return false otherwise
 bool TurtleProgram::operator==(const TurtleProgram& turtle) const
 {
     bool result = true;
@@ -81,7 +95,10 @@ bool TurtleProgram::operator==(const TurtleProgram& turtle) const
     return result;
 }
 
-
+//overloading operators != for the program.
+//The param required another program in order
+//to compare. Return true if they are not equal,
+//return false otherwise
 bool TurtleProgram::operator!=(const TurtleProgram& turtle) const
 {
     bool result = true;
@@ -95,7 +112,7 @@ bool TurtleProgram::operator!=(const TurtleProgram& turtle) const
 }
 
 //overloading operator = for the program.
-//The param required another program 
+//The param required another program
 TurtleProgram& TurtleProgram::operator=(const TurtleProgram& turtle)
 {
     size = turtle.size;
@@ -174,7 +191,7 @@ TurtleProgram& TurtleProgram::operator+=(const TurtleProgram& turtle)
 TurtleProgram TurtleProgram::operator+(const TurtleProgram& turtle) const
 {
     TurtleProgram result = *this;
-    result += turtle;
+    result += turtle; //utilize operator += above
     return result;
 }
 
@@ -185,7 +202,7 @@ TurtleProgram TurtleProgram::operator+(const TurtleProgram& turtle) const
 TurtleProgram TurtleProgram::operator*(const int amount) const
 {
     TurtleProgram result = *this;
-    result *= amount;
+    result *= amount; //utilize operator *= above
     return result;
 }
 
@@ -195,6 +212,7 @@ TurtleProgram TurtleProgram::operator*(const int amount) const
 ostream& operator<<(ostream& outStream, const TurtleProgram& turtle)
 {
     outStream << "[ ";
+    //print all elements within the program
     for (int i = 0; i < turtle.size; i++)
     {
         outStream << turtle.arr[i] << " ";
